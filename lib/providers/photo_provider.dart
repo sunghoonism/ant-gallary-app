@@ -18,12 +18,21 @@ class PhotoProvider extends ChangeNotifier {
   // 초기화 플래그
   bool _initialized = false;
 
+  // 선택 모드 관련 변수
+  bool _isSelectionMode = false;
+  final Set<File> _selectedPhotos = {};
+
   List<PhotoFolder> get folders => _folders;
   List<File> get photos => _photos;
   File? get selectedPhoto => _selectedPhoto;
   bool get isLoading => _isLoading;
   String get error => _error;
   String? get defaultAntCameraPath => _defaultAntCameraPath;
+  
+  // 선택 모드 getter
+  bool get isSelectionMode => _isSelectionMode;
+  Set<File> get selectedPhotos => _selectedPhotos;
+  int get selectedCount => _selectedPhotos.length;
 
   PhotoProvider() {
     // 생성자에서는 초기화만 예약
@@ -270,8 +279,8 @@ class PhotoProvider extends ChangeNotifier {
     }
   }
 
-  void selectPhoto(File photo) {
-    _selectedPhoto = photo;
+  void selectPhoto(File file) {
+    _selectedPhoto = file;
     notifyListeners();
   }
   
@@ -366,6 +375,170 @@ class PhotoProvider extends ChangeNotifier {
     } catch (e) {
       debugPrint('Error clearing cache: $e');
       // 오류가 발생해도 앱 실행에 영향을 주지 않도록 무시
+    }
+  }
+
+  // 선택 모드 시작
+  void startSelectionMode(File initialPhoto) {
+    _isSelectionMode = true;
+    _selectedPhotos.clear();
+    _selectedPhotos.add(initialPhoto);
+    notifyListeners();
+  }
+
+  // 선택 모드 종료
+  void cancelSelectionMode() {
+    _isSelectionMode = false;
+    _selectedPhotos.clear();
+    notifyListeners();
+  }
+
+  // 사진 선택 토글
+  void togglePhotoSelection(File photo) {
+    if (_selectedPhotos.contains(photo)) {
+      _selectedPhotos.remove(photo);
+      // 모든 항목 선택 해제되면 선택 모드 종료
+      if (_selectedPhotos.isEmpty) {
+        _isSelectionMode = false;
+      }
+    } else {
+      _selectedPhotos.add(photo);
+    }
+    notifyListeners();
+  }
+
+  // 선택된 사진 삭제
+  Future<bool> deleteSelectedPhotos() async {
+    if (_selectedPhotos.isEmpty) return false;
+    
+    bool success = true;
+    
+    for (final photo in _selectedPhotos.toList()) {
+      try {
+        // 파일 삭제
+        final file = File(photo.path);
+        if (await file.exists()) {
+          await file.delete();
+          
+          // 선택 목록과 사진 목록에서 제거
+          _selectedPhotos.remove(photo);
+          _photos.removeWhere((p) => p.path == photo.path);
+
+          // 폴더 내 사진 업데이트
+          for (int i = 0; i < _folders.length; i++) {
+            final folder = _folders[i];
+            if (folder.photos.any((p) => p.path == photo.path)) {
+              // 폴더에서 사진 제거
+              final updatedPhotos = folder.photos.where((p) => p.path != photo.path).toList();
+              
+              // 썸네일 업데이트
+              File? newThumbnail;
+              if (updatedPhotos.isNotEmpty) {
+                newThumbnail = updatedPhotos.first;
+              }
+              
+              // 폴더 업데이트
+              _folders[i] = folder.copyWith(
+                photos: updatedPhotos,
+                thumbnailFile: folder.thumbnailFile?.path == photo.path ? newThumbnail : folder.thumbnailFile,
+              );
+            }
+          }
+        }
+      } catch (e) {
+        debugPrint('Error deleting photo: $e');
+        success = false;
+      }
+    }
+    
+    // 선택 모드 종료
+    _isSelectionMode = false;
+    _selectedPhotos.clear();
+    
+    notifyListeners();
+    return success;
+  }
+
+  // 선택된 사진 다른 폴더로 이동
+  Future<bool> moveSelectedPhotos(String targetFolderPath) async {
+    if (_selectedPhotos.isEmpty) return false;
+    if (targetFolderPath.isEmpty) return false;
+    
+    bool success = true;
+    
+    try {
+      // 대상 폴더 확인
+      final Directory targetDir = Directory(targetFolderPath);
+      if (!await targetDir.exists()) {
+        await targetDir.create(recursive: true);
+      }
+      
+      for (final photo in _selectedPhotos.toList()) {
+        try {
+          final File file = File(photo.path);
+          if (await file.exists()) {
+            // 새 파일 경로 생성
+            final String fileName = path.basename(photo.path);
+            final String newPath = path.join(targetFolderPath, fileName);
+            
+            // 같은 이름의 파일이 있으면 이름 변경
+            String uniquePath = newPath;
+            int count = 1;
+            while (await File(uniquePath).exists()) {
+              final String nameWithoutExtension = path.basenameWithoutExtension(fileName);
+              final String extension = path.extension(fileName);
+              uniquePath = path.join(targetFolderPath, '${nameWithoutExtension}_$count$extension');
+              count++;
+            }
+            
+            // 파일 복사 후 원본 삭제
+            final File newFile = await file.copy(uniquePath);
+            await file.delete();
+            
+            // 선택 목록과 사진 목록에서 제거
+            _selectedPhotos.remove(photo);
+            _photos.removeWhere((p) => p.path == photo.path);
+            
+            // 폴더 내 사진 업데이트
+            for (int i = 0; i < _folders.length; i++) {
+              final folder = _folders[i];
+              if (folder.photos.any((p) => p.path == photo.path)) {
+                // 폴더에서 사진 제거
+                final updatedPhotos = folder.photos.where((p) => p.path != photo.path).toList();
+                
+                // 썸네일 업데이트
+                File? newThumbnail;
+                if (updatedPhotos.isNotEmpty) {
+                  newThumbnail = updatedPhotos.first;
+                }
+                
+                // 폴더 업데이트
+                _folders[i] = folder.copyWith(
+                  photos: updatedPhotos,
+                  thumbnailFile: folder.thumbnailFile?.path == photo.path ? newThumbnail : folder.thumbnailFile,
+                );
+              }
+            }
+          }
+        } catch (e) {
+          debugPrint('Error moving photo: $e');
+          success = false;
+        }
+      }
+      
+      // 선택 모드 종료
+      _isSelectionMode = false;
+      _selectedPhotos.clear();
+      
+      notifyListeners();
+      
+      // 폴더 목록 새로고침
+      await loadFolders();
+      
+      return success;
+    } catch (e) {
+      debugPrint('Error moving photos: $e');
+      return false;
     }
   }
 } 

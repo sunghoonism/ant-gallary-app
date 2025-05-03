@@ -126,6 +126,9 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
   }
 
   Widget _buildBottomInfo() {
+    // 파일 경로에서 파일 이름만 추출
+    String fileName = widget.file.path.split('/').last;
+    
     return Container(
       color: Colors.black,
       padding: const EdgeInsets.all(16.0),
@@ -133,6 +136,18 @@ class _PhotoDetailScreenState extends State<PhotoDetailScreen> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // 파일 이름 표시
+          Text(
+            fileName,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          const SizedBox(height: 8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

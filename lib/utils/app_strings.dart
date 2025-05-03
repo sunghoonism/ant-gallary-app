@@ -3,24 +3,8 @@ import 'package:flutter/services.dart';
 
 /// 앱 문자열 리소스 관리 클래스
 class AppStrings {
-  // 싱글톤 인스턴스
-  static final AppStrings _instance = AppStrings._internal();
-  factory AppStrings() => _instance;
-  AppStrings._internal();
-
   // 플랫폼 채널
   static const MethodChannel _channel = MethodChannel('app_strings_channel');
-
-  // Android에서 문자열 리소스 가져오기
-  static Future<String> _getAndroidString(String key) async {
-    try {
-      final String value = await _channel.invokeMethod('getString', {'key': key});
-      return value;
-    } catch (e) {
-      // 기본값 사용
-      return _defaultStrings[key] ?? key;
-    }
-  }
 
   // 기본 문자열 맵 (네이티브에서 가져오지 못할 경우 사용)
   static final Map<String, String> _defaultStrings = {
@@ -40,46 +24,105 @@ class AppStrings {
     'storage_permission_required': 'Storage access permission is required. Please allow it in settings.',
     'today': 'Today',
     'yesterday': 'Yesterday',
+    'folder_selection_error': 'Folder selection error: %s',
+    'directory_selection_error': 'Directory selection error: %s',
+    'error_message': 'Error: %s',
+    'cannot_load_image': 'Cannot load image: %s',
+    'items': '%d items',
+    'select_folder': 'Select Folder',
+    'delete': 'Delete',
+    'move': 'Move',
+    'selected_items': '%d selected',
+    'delete_confirm': 'Delete %d items?',
+    'delete_success': 'Items deleted',
+    'delete_error': 'Could not delete some items',
+    'move_success': 'Items moved',
+    'move_error': 'Could not move some items',
   };
 
-  // 플랫폼에 따라 문자열 가져오기
-  static Future<String> _getString(String key) async {
-    if (Platform.isAndroid) {
-      return await _getAndroidString(key);
-    } else {
-      // 다른 플랫폼에서는 기본값 사용
-      return _defaultStrings[key] ?? key;
-    }
-  }
-
-  // 문자열 즉시 가져오기 (캐시 활용)
+  // 문자열 캐시
   static final Map<String, String> _cache = {};
+
+  // 기본 문자열 가져오기
   static String get(String key) {
     return _cache[key] ?? _defaultStrings[key] ?? key;
   }
 
-  // 앱 시작시 모든 문자열 미리 로드
+  // 문자열 리소스 로드
   static Future<void> preloadStrings() async {
-    for (final key in _defaultStrings.keys) {
-      _cache[key] = await _getString(key);
+    for (String key in _defaultStrings.keys) {
+      try {
+        if (Platform.isAndroid) {
+          final String value = await _channel.invokeMethod('getString', {'key': key});
+          _cache[key] = value;
+        } else {
+          _cache[key] = _defaultStrings[key] ?? key;
+        }
+      } catch (e) {
+        _cache[key] = _defaultStrings[key] ?? key;
+      }
     }
   }
 
-  // 에러 포맷 문자열
+  // 기본 포맷 문자열 처리 (동기식)
+  static String format(String key, Map<String, dynamic> args) {
+    final String format = _cache[key] ?? _defaultStrings[key] ?? key;
+    if (key == 'items' && args.containsKey('arg1')) {
+      return format.replaceAll('%d', args['arg1'].toString());
+    } else if (args.containsKey('arg1')) {
+      return format.replaceAll('%s', args['arg1'].toString());
+    }
+    return format;
+  }
+
+  // 포맷 문자열 메서드 (비동기식)
+  static Future<String> _getFormattedString(String key, Map<String, dynamic> args) async {
+    try {
+      if (Platform.isAndroid) {
+        return await _channel.invokeMethod('getString', {'key': key, ...args});
+      }
+    } catch (e) {
+      // 네이티브 호출 실패 시 기본값 사용
+    }
+
+    // 기본 문자열 사용
+    return format(key, args);
+  }
+
+  // 에러 포맷 문자열 (동기식)
   static String folderSelectionError(String error) => 
-      '${get('folder_selection_error').replaceAll('%1\$s', '')}$error';
+      format('folder_selection_error', {'arg1': error});
   
   static String directorySelectionError(String error) => 
-      '${get('directory_selection_error').replaceAll('%1\$s', '')}$error';
+      format('directory_selection_error', {'arg1': error});
   
   static String errorMessage(String error) => 
-      '${get('error_message').replaceAll('%1\$s', '')}$error';
+      format('error_message', {'arg1': error});
   
   static String cannotLoadImage(String error) => 
-      '${get('cannot_load_image').replaceAll('%1\$s', '')}$error';
+      format('cannot_load_image', {'arg1': error});
   
   static String items(int count) => 
-      get('items').replaceAll('%1\$d', count.toString());
+      format('items', {'arg1': count});
+
+  // 에러 포맷 문자열 (비동기식)
+  static Future<String> folderSelectionErrorAsync(String error) async =>
+      await _getFormattedString('folder_selection_error', {'arg1': error});
+  
+  static Future<String> directorySelectionErrorAsync(String error) async =>
+      await _getFormattedString('directory_selection_error', {'arg1': error});
+  
+  static Future<String> errorMessageAsync(String error) async =>
+      await _getFormattedString('error_message', {'arg1': error});
+  
+  static Future<String> cannotLoadImageAsync(String error) async =>
+      await _getFormattedString('cannot_load_image', {'arg1': error});
+  
+  static Future<String> itemsAsync(int count) async =>
+      await _getFormattedString('items', {'arg1': count});
+      
+  static Future<String> selectedItemsAsync(int count) async =>
+      await _getFormattedString('selected_items', {'arg1': count});
 
   // 편의성을 위한 getter
   static String get appTitle => get('app_title');

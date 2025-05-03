@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">앤트 갤러리</string>
+    <string name="app_title">앨범</string>
+    <string name="try_again">다시 시도</string>
+    <string name="permission_settings">권한 설정</string>
+    <string name="browse_folders">폴더 찾아보기</string>
+    <string name="cancel">취소</string>
+    <string name="apply">적용</string>
+    <string name="settings">설정</string>
+    <string name="no_folders_found">폴더를 찾을 수 없습니다</string>
+    <string name="no_photos_found">사진을 찾을 수 없습니다</string>
+    <string name="image_not_found">이미지를 찾을 수 없습니다</string>
+    <string name="root_folder_settings">루트 폴더 설정</string>
+    <string name="current_path">현재 경로:</string>
+    <string name="subfolder_info">선택한 폴더의 하위 폴더가 갤러리에 표시됩니다.</string>
+    <string name="storage_permission_required">저장소 액세스 권한이 필요합니다. 설정에서 허용해주세요.</string>
+    <string name="today">오늘</string>
+    <string name="yesterday">어제</string>
+    <string name="folder_selection_error">폴더 선택 오류: %1$s</string>
+    <string name="directory_selection_error">디렉토리 선택 오류: %1$s</string>
+    <string name="error_message">오류: %1$s</string>
+    <string name="cannot_load_image">이미지를 로드할 수 없습니다: %1$s</string>
+    <string name="items">%1$d개 항목</string>
+    <string name="select_folder">폴더 선택</string>
+    <string name="delete">삭제</string>
+    <string name="move">이동</string>
+    <string name="selected_items">%1$d개 선택됨</string>
+    <string name="delete_confirm">%1$d개 항목을 삭제하시겠습니까?</string>
+    <string name="delete_success">항목이 삭제되었습니다</string>
+    <string name="delete_error">일부 항목을 삭제하지 못했습니다</string>
+    <string name="move_success">항목이 이동되었습니다</string>
+    <string name="move_error">일부 항목을 이동하지 못했습니다</string>
+</resources> 

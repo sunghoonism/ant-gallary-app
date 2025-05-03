@@ -22,4 +22,13 @@
     <string name="error_message">Error: %1$s</string>
     <string name="cannot_load_image">Cannot load image: %1$s</string>
     <string name="items">%1$d items</string>
+    <string name="select_folder">Select Folder</string>
+    <string name="delete">Delete</string>
+    <string name="move">Move</string>
+    <string name="selected_items">%1$d selected</string>
+    <string name="delete_confirm">Delete %1$d items?</string>
+    <string name="delete_success">Items deleted</string>
+    <string name="delete_error">Could not delete some items</string>
+    <string name="move_success">Items moved</string>
+    <string name="move_error">Could not move some items</string>
 </resources> 

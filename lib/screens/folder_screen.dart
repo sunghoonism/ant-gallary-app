@@ -373,12 +373,17 @@ class FolderItem extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    AppStrings.items(itemCount),
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey[600],
-                    ),
+                  FutureBuilder<String>(
+                    future: AppStrings.itemsAsync(itemCount),
+                    builder: (context, snapshot) {
+                      return Text(
+                        snapshot.data ?? '$itemCount items',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey[600],
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
