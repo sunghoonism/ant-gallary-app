@@ -1,4 +1,4 @@
-package com.example.ant_gallary
+package com.ant_revolution.ant_gallary
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
