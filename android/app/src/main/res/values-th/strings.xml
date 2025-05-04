@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">แอนท์แกลเลอรี่</string>
+    <string name="app_title">อัลบั้ม</string>
+    <string name="try_again">ลองอีกครั้ง</string>
+    <string name="permission_settings">การตั้งค่าสิทธิ์</string>
+    <string name="browse_folders">เรียกดูโฟลเดอร์</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="apply">นำไปใช้</string>
+    <string name="settings">การตั้งค่า</string>
+    <string name="no_folders_found">ไม่พบโฟลเดอร์</string>
+    <string name="no_photos_found">ไม่พบรูปภาพ</string>
+    <string name="image_not_found">ไม่พบรูปภาพ</string>
+    <string name="root_folder_settings">การตั้งค่าโฟลเดอร์หลัก</string>
+    <string name="current_path">เส้นทางปัจจุบัน:</string>
+    <string name="subfolder_info">โฟลเดอร์ย่อยของโฟลเดอร์ที่เลือกจะแสดงในแกลเลอรี่</string>
+    <string name="storage_permission_required">ต้องการสิทธิ์การเข้าถึงที่เก็บข้อมูล โปรดอนุญาตในการตั้งค่า</string>
+    <string name="today">วันนี้</string>
+    <string name="yesterday">เมื่อวาน</string>
+    <string name="folder_selection_error">ข้อผิดพลาดในการเลือกโฟลเดอร์: %1$s</string>
+    <string name="directory_selection_error">ข้อผิดพลาดในการเลือกไดเรกทอรี: %1$s</string>
+    <string name="error_message">ข้อผิดพลาด: %1$s</string>
+    <string name="cannot_load_image">ไม่สามารถโหลดรูปภาพ: %1$s</string>
+    <string name="items">%1$d รายการ</string>
+    <string name="select_folder">เลือกโฟลเดอร์</string>
+    <string name="delete">ลบ</string>
+    <string name="move">ย้าย</string>
+    <string name="selected_items">เลือกแล้ว %1$d รายการ</string>
+    <string name="delete_confirm">ลบ %1$d รายการ?</string>
+    <string name="delete_success">ลบรายการแล้ว</string>
+    <string name="delete_error">ไม่สามารถลบบางรายการ</string>
+    <string name="move_success">ย้ายรายการแล้ว</string>
+    <string name="move_error">ไม่สามารถย้ายบางรายการ</string>
+</resources> 

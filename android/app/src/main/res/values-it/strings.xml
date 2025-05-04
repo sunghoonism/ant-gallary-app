@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ant Gallery</string>
+    <string name="app_title">Album</string>
+    <string name="try_again">Riprova</string>
+    <string name="permission_settings">Impostazioni Permessi</string>
+    <string name="browse_folders">Sfoglia Cartelle</string>
+    <string name="cancel">Annulla</string>
+    <string name="apply">Applica</string>
+    <string name="settings">Impostazioni</string>
+    <string name="no_folders_found">Nessuna cartella trovata</string>
+    <string name="no_photos_found">Nessuna foto trovata</string>
+    <string name="image_not_found">Immagine non trovata</string>
+    <string name="root_folder_settings">Impostazioni Cartella Principale</string>
+    <string name="current_path">Percorso attuale:</string>
+    <string name="subfolder_info">Le sottocartelle della cartella selezionata saranno visualizzate nella galleria.</string>
+    <string name="storage_permission_required">È richiesto il permesso di accesso allo storage. Abilitalo nelle impostazioni.</string>
+    <string name="today">Oggi</string>
+    <string name="yesterday">Ieri</string>
+    <string name="folder_selection_error">Errore selezione cartella: %1$s</string>
+    <string name="directory_selection_error">Errore selezione directory: %1$s</string>
+    <string name="error_message">Errore: %1$s</string>
+    <string name="cannot_load_image">Impossibile caricare l\'immagine: %1$s</string>
+    <string name="items">%1$d elementi</string>
+    <string name="select_folder">Seleziona Cartella</string>
+    <string name="delete">Elimina</string>
+    <string name="move">Sposta</string>
+    <string name="selected_items">%1$d selezionati</string>
+    <string name="delete_confirm">Eliminare %1$d elementi?</string>
+    <string name="delete_success">Elementi eliminati</string>
+    <string name="delete_error">Impossibile eliminare alcuni elementi</string>
+    <string name="move_success">Elementi spostati</string>
+    <string name="move_error">Impossibile spostare alcuni elementi</string>
+</resources> 

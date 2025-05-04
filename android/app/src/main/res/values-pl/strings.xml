@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ant Gallery</string>
+    <string name="app_title">Albumy</string>
+    <string name="try_again">Spróbuj ponownie</string>
+    <string name="permission_settings">Ustawienia uprawnień</string>
+    <string name="browse_folders">Przeglądaj foldery</string>
+    <string name="cancel">Anuluj</string>
+    <string name="apply">Zastosuj</string>
+    <string name="settings">Ustawienia</string>
+    <string name="no_folders_found">Nie znaleziono folderów</string>
+    <string name="no_photos_found">Nie znaleziono zdjęć</string>
+    <string name="image_not_found">Nie znaleziono obrazu</string>
+    <string name="root_folder_settings">Ustawienia folderu głównego</string>
+    <string name="current_path">Obecna ścieżka:</string>
+    <string name="subfolder_info">Podfoldery wybranego folderu będą wyświetlane w galerii.</string>
+    <string name="storage_permission_required">Wymagane jest uprawnienie dostępu do pamięci. Proszę zezwolić w ustawieniach.</string>
+    <string name="today">Dzisiaj</string>
+    <string name="yesterday">Wczoraj</string>
+    <string name="folder_selection_error">Błąd wyboru folderu: %1$s</string>
+    <string name="directory_selection_error">Błąd wyboru katalogu: %1$s</string>
+    <string name="error_message">Błąd: %1$s</string>
+    <string name="cannot_load_image">Nie można załadować obrazu: %1$s</string>
+    <string name="items">%1$d elementów</string>
+    <string name="select_folder">Wybierz folder</string>
+    <string name="delete">Usuń</string>
+    <string name="move">Przenieś</string>
+    <string name="selected_items">Zaznaczono %1$d</string>
+    <string name="delete_confirm">Usunąć %1$d elementów?</string>
+    <string name="delete_success">Elementy usunięte</string>
+    <string name="delete_error">Nie można usunąć niektórych elementów</string>
+    <string name="move_success">Elementy przeniesione</string>
+    <string name="move_error">Nie można przenieść niektórych elementów</string>
+</resources> 

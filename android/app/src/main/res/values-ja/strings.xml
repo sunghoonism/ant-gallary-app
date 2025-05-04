@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">アントギャラリー</string>
+    <string name="app_title">アルバム</string>
+    <string name="try_again">再試行</string>
+    <string name="permission_settings">権限設定</string>
+    <string name="browse_folders">フォルダを参照</string>
+    <string name="cancel">キャンセル</string>
+    <string name="apply">適用</string>
+    <string name="settings">設定</string>
+    <string name="no_folders_found">フォルダが見つかりません</string>
+    <string name="no_photos_found">写真が見つかりません</string>
+    <string name="image_not_found">画像が見つかりません</string>
+    <string name="root_folder_settings">ルートフォルダ設定</string>
+    <string name="current_path">現在のパス：</string>
+    <string name="subfolder_info">選択したフォルダのサブフォルダがギャラリーに表示されます。</string>
+    <string name="storage_permission_required">ストレージアクセス権限が必要です。設定で許可してください。</string>
+    <string name="today">今日</string>
+    <string name="yesterday">昨日</string>
+    <string name="folder_selection_error">フォルダ選択エラー：%1$s</string>
+    <string name="directory_selection_error">ディレクトリ選択エラー：%1$s</string>
+    <string name="error_message">エラー：%1$s</string>
+    <string name="cannot_load_image">画像を読み込めません：%1$s</string>
+    <string name="items">%1$d項目</string>
+    <string name="select_folder">フォルダを選択</string>
+    <string name="delete">削除</string>
+    <string name="move">移動</string>
+    <string name="selected_items">%1$d件選択</string>
+    <string name="delete_confirm">%1$d項目を削除しますか？</string>
+    <string name="delete_success">項目が削除されました</string>
+    <string name="delete_error">一部の項目を削除できませんでした</string>
+    <string name="move_success">項目が移動されました</string>
+    <string name="move_error">一部の項目を移動できませんでした</string>
+</resources> 

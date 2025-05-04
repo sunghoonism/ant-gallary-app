@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ऐंट गैलरी</string>
+    <string name="app_title">एल्बम</string>
+    <string name="try_again">पुनः प्रयास करें</string>
+    <string name="permission_settings">अनुमति सेटिंग्स</string>
+    <string name="browse_folders">फ़ोल्डर ब्राउज़ करें</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="apply">लागू करें</string>
+    <string name="settings">सेटिंग्स</string>
+    <string name="no_folders_found">कोई फ़ोल्डर नहीं मिला</string>
+    <string name="no_photos_found">कोई फ़ोटो नहीं मिला</string>
+    <string name="image_not_found">छवि नहीं मिली</string>
+    <string name="root_folder_settings">रूट फ़ोल्डर सेटिंग्स</string>
+    <string name="current_path">वर्तमान पथ:</string>
+    <string name="subfolder_info">चयनित फ़ोल्डर के सबफ़ोल्डर गैलरी में दिखाए जाएंगे।</string>
+    <string name="storage_permission_required">स्टोरेज एक्सेस अनुमति आवश्यक है। कृपया सेटिंग्स में अनुमति दें।</string>
+    <string name="today">आज</string>
+    <string name="yesterday">कल</string>
+    <string name="folder_selection_error">फ़ोल्डर चयन त्रुटि: %1$s</string>
+    <string name="directory_selection_error">डायरेक्टरी चयन त्रुटि: %1$s</string>
+    <string name="error_message">त्रुटि: %1$s</string>
+    <string name="cannot_load_image">छवि लोड नहीं कर सकते: %1$s</string>
+    <string name="items">%1$d आइटम</string>
+    <string name="select_folder">फ़ोल्डर चुनें</string>
+    <string name="delete">हटाएं</string>
+    <string name="move">स्थानांतरित करें</string>
+    <string name="selected_items">%1$d चयनित</string>
+    <string name="delete_confirm">%1$d आइटम हटाएं?</string>
+    <string name="delete_success">आइटम हटाए गए</string>
+    <string name="delete_error">कुछ आइटम हटाए नहीं जा सके</string>
+    <string name="move_success">आइटम स्थानांतरित किए गए</string>
+    <string name="move_error">कुछ आइटम स्थानांतरित नहीं किए जा सके</string>
+</resources> 

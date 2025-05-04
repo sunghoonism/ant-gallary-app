@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ant Gallery</string>
+    <string name="app_title">Alben</string>
+    <string name="try_again">Erneut versuchen</string>
+    <string name="permission_settings">Berechtigungseinstellungen</string>
+    <string name="browse_folders">Ordner durchsuchen</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="apply">Anwenden</string>
+    <string name="settings">Einstellungen</string>
+    <string name="no_folders_found">Keine Ordner gefunden</string>
+    <string name="no_photos_found">Keine Fotos gefunden</string>
+    <string name="image_not_found">Bild nicht gefunden</string>
+    <string name="root_folder_settings">Stammordner-Einstellungen</string>
+    <string name="current_path">Aktueller Pfad:</string>
+    <string name="subfolder_info">Unterordner des ausgewählten Ordners werden in der Galerie angezeigt.</string>
+    <string name="storage_permission_required">Speicherzugriffsberechtigung ist erforderlich. Bitte aktivieren Sie diese in den Einstellungen.</string>
+    <string name="today">Heute</string>
+    <string name="yesterday">Gestern</string>
+    <string name="folder_selection_error">Fehler bei der Ordnerauswahl: %1$s</string>
+    <string name="directory_selection_error">Fehler bei der Verzeichnisauswahl: %1$s</string>
+    <string name="error_message">Fehler: %1$s</string>
+    <string name="cannot_load_image">Bild kann nicht geladen werden: %1$s</string>
+    <string name="items">%1$d Elemente</string>
+    <string name="select_folder">Ordner auswählen</string>
+    <string name="delete">Löschen</string>
+    <string name="move">Verschieben</string>
+    <string name="selected_items">%1$d ausgewählt</string>
+    <string name="delete_confirm">%1$d Elemente löschen?</string>
+    <string name="delete_success">Elemente gelöscht</string>
+    <string name="delete_error">Einige Elemente konnten nicht gelöscht werden</string>
+    <string name="move_success">Elemente verschoben</string>
+    <string name="move_error">Einige Elemente konnten nicht verschoben werden</string>
+</resources> 

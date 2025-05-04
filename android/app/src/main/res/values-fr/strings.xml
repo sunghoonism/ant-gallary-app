@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ant Gallery</string>
+    <string name="app_title">Albums</string>
+    <string name="try_again">Réessayer</string>
+    <string name="permission_settings">Paramètres des autorisations</string>
+    <string name="browse_folders">Parcourir les dossiers</string>
+    <string name="cancel">Annuler</string>
+    <string name="apply">Appliquer</string>
+    <string name="settings">Paramètres</string>
+    <string name="no_folders_found">Aucun dossier trouvé</string>
+    <string name="no_photos_found">Aucune photo trouvée</string>
+    <string name="image_not_found">Image non trouvée</string>
+    <string name="root_folder_settings">Paramètres du dossier racine</string>
+    <string name="current_path">Chemin actuel :</string>
+    <string name="subfolder_info">Les sous-dossiers du dossier sélectionné seront affichés dans la galerie.</string>
+    <string name="storage_permission_required">L\'autorisation d\'accès au stockage est requise. Veuillez l\'autoriser dans les paramètres.</string>
+    <string name="today">Aujourd\'hui</string>
+    <string name="yesterday">Hier</string>
+    <string name="folder_selection_error">Erreur de sélection de dossier : %1$s</string>
+    <string name="directory_selection_error">Erreur de sélection de répertoire : %1$s</string>
+    <string name="error_message">Erreur : %1$s</string>
+    <string name="cannot_load_image">Impossible de charger l\'image : %1$s</string>
+    <string name="items">%1$d éléments</string>
+    <string name="select_folder">Sélectionner un dossier</string>
+    <string name="delete">Supprimer</string>
+    <string name="move">Déplacer</string>
+    <string name="selected_items">%1$d sélectionnés</string>
+    <string name="delete_confirm">Supprimer %1$d éléments ?</string>
+    <string name="delete_success">Éléments supprimés</string>
+    <string name="delete_error">Impossible de supprimer certains éléments</string>
+    <string name="move_success">Éléments déplacés</string>
+    <string name="move_error">Impossible de déplacer certains éléments</string>
+</resources> 

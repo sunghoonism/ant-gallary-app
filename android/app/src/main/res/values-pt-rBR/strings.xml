@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ant Gallery</string>
+    <string name="app_title">Álbuns</string>
+    <string name="try_again">Tentar Novamente</string>
+    <string name="permission_settings">Configurações de Permissão</string>
+    <string name="browse_folders">Navegar nas Pastas</string>
+    <string name="cancel">Cancelar</string>
+    <string name="apply">Aplicar</string>
+    <string name="settings">Configurações</string>
+    <string name="no_folders_found">Nenhuma pasta encontrada</string>
+    <string name="no_photos_found">Nenhuma foto encontrada</string>
+    <string name="image_not_found">Imagem não encontrada</string>
+    <string name="root_folder_settings">Configurações da Pasta Raiz</string>
+    <string name="current_path">Caminho atual:</string>
+    <string name="subfolder_info">Subpastas da pasta selecionada serão exibidas na galeria.</string>
+    <string name="storage_permission_required">É necessária permissão de acesso ao armazenamento. Por favor, permita nas configurações.</string>
+    <string name="today">Hoje</string>
+    <string name="yesterday">Ontem</string>
+    <string name="folder_selection_error">Erro na seleção da pasta: %1$s</string>
+    <string name="directory_selection_error">Erro na seleção do diretório: %1$s</string>
+    <string name="error_message">Erro: %1$s</string>
+    <string name="cannot_load_image">Não é possível carregar a imagem: %1$s</string>
+    <string name="items">%1$d itens</string>
+    <string name="select_folder">Selecionar Pasta</string>
+    <string name="delete">Excluir</string>
+    <string name="move">Mover</string>
+    <string name="selected_items">%1$d selecionados</string>
+    <string name="delete_confirm">Excluir %1$d itens?</string>
+    <string name="delete_success">Itens excluídos</string>
+    <string name="delete_error">Não foi possível excluir alguns itens</string>
+    <string name="move_success">Itens movidos</string>
+    <string name="move_error">Não foi possível mover alguns itens</string>
+</resources> 

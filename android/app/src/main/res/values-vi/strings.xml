@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ant Gallery</string>
+    <string name="app_title">Album</string>
+    <string name="try_again">Thử lại</string>
+    <string name="permission_settings">Cài đặt quyền</string>
+    <string name="browse_folders">Duyệt thư mục</string>
+    <string name="cancel">Hủy</string>
+    <string name="apply">Áp dụng</string>
+    <string name="settings">Cài đặt</string>
+    <string name="no_folders_found">Không tìm thấy thư mục</string>
+    <string name="no_photos_found">Không tìm thấy ảnh</string>
+    <string name="image_not_found">Không tìm thấy hình ảnh</string>
+    <string name="root_folder_settings">Cài đặt thư mục gốc</string>
+    <string name="current_path">Đường dẫn hiện tại:</string>
+    <string name="subfolder_info">Các thư mục con của thư mục đã chọn sẽ được hiển thị trong thư viện.</string>
+    <string name="storage_permission_required">Yêu cầu quyền truy cập bộ nhớ. Vui lòng cho phép trong cài đặt.</string>
+    <string name="today">Hôm nay</string>
+    <string name="yesterday">Hôm qua</string>
+    <string name="folder_selection_error">Lỗi chọn thư mục: %1$s</string>
+    <string name="directory_selection_error">Lỗi chọn thư mục: %1$s</string>
+    <string name="error_message">Lỗi: %1$s</string>
+    <string name="cannot_load_image">Không thể tải hình ảnh: %1$s</string>
+    <string name="items">%1$d mục</string>
+    <string name="select_folder">Chọn thư mục</string>
+    <string name="delete">Xóa</string>
+    <string name="move">Di chuyển</string>
+    <string name="selected_items">Đã chọn %1$d</string>
+    <string name="delete_confirm">Xóa %1$d mục?</string>
+    <string name="delete_success">Đã xóa các mục</string>
+    <string name="delete_error">Không thể xóa một số mục</string>
+    <string name="move_success">Đã di chuyển các mục</string>
+    <string name="move_error">Không thể di chuyển một số mục</string>
+</resources> 

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Ant Gallery</string>
+    <string name="app_title">Albümler</string>
+    <string name="try_again">Tekrar Dene</string>
+    <string name="permission_settings">İzin Ayarları</string>
+    <string name="browse_folders">Klasörlere Gözat</string>
+    <string name="cancel">İptal</string>
+    <string name="apply">Uygula</string>
+    <string name="settings">Ayarlar</string>
+    <string name="no_folders_found">Klasör bulunamadı</string>
+    <string name="no_photos_found">Fotoğraf bulunamadı</string>
+    <string name="image_not_found">Resim bulunamadı</string>
+    <string name="root_folder_settings">Kök Klasör Ayarları</string>
+    <string name="current_path">Mevcut Yol:</string>
+    <string name="subfolder_info">Seçilen klasörün alt klasörleri galeride gösterilecektir.</string>
+    <string name="storage_permission_required">Depolama erişim izni gereklidir. Lütfen ayarlarda izin verin.</string>
+    <string name="today">Bugün</string>
+    <string name="yesterday">Dün</string>
+    <string name="folder_selection_error">Klasör seçim hatası: %1$s</string>
+    <string name="directory_selection_error">Dizin seçim hatası: %1$s</string>
+    <string name="error_message">Hata: %1$s</string>
+    <string name="cannot_load_image">Resim yüklenemiyor: %1$s</string>
+    <string name="items">%1$d öğe</string>
+    <string name="select_folder">Klasör Seç</string>
+    <string name="delete">Sil</string>
+    <string name="move">Taşı</string>
+    <string name="selected_items">%1$d seçildi</string>
+    <string name="delete_confirm">%1$d öğe silinsin mi?</string>
+    <string name="delete_success">Öğeler silindi</string>
+    <string name="delete_error">Bazı öğeler silinemedi</string>
+    <string name="move_success">Öğeler taşındı</string>
+    <string name="move_error">Bazı öğeler taşınamadı</string>
+</resources> 

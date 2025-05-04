@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">معرض النمل</string>
+    <string name="app_title">ألبومات</string>
+    <string name="try_again">حاول مرة أخرى</string>
+    <string name="permission_settings">إعدادات الأذونات</string>
+    <string name="browse_folders">تصفح المجلدات</string>
+    <string name="cancel">إلغاء</string>
+    <string name="apply">تطبيق</string>
+    <string name="settings">إعدادات</string>
+    <string name="no_folders_found">لم يتم العثور على مجلدات</string>
+    <string name="no_photos_found">لم يتم العثور على صور</string>
+    <string name="image_not_found">الصورة غير موجودة</string>
+    <string name="root_folder_settings">إعدادات المجلد الرئيسي</string>
+    <string name="current_path">المسار الحالي:</string>
+    <string name="subfolder_info">سيتم عرض المجلدات الفرعية للمجلد المحدد في المعرض.</string>
+    <string name="storage_permission_required">يلزم إذن الوصول إلى التخزين. يرجى السماح به في الإعدادات.</string>
+    <string name="today">اليوم</string>
+    <string name="yesterday">أمس</string>
+    <string name="folder_selection_error">خطأ في اختيار المجلد: %1$s</string>
+    <string name="directory_selection_error">خطأ في اختيار الدليل: %1$s</string>
+    <string name="error_message">خطأ: %1$s</string>
+    <string name="cannot_load_image">لا يمكن تحميل الصورة: %1$s</string>
+    <string name="items">%1$d عنصر</string>
+    <string name="select_folder">اختر مجلد</string>
+    <string name="delete">حذف</string>
+    <string name="move">نقل</string>
+    <string name="selected_items">تم اختيار %1$d</string>
+    <string name="delete_confirm">حذف %1$d عنصر؟</string>
+    <string name="delete_success">تم حذف العناصر</string>
+    <string name="delete_error">تعذر حذف بعض العناصر</string>
+    <string name="move_success">تم نقل العناصر</string>
+    <string name="move_error">تعذر نقل بعض العناصر</string>
+</resources> 
