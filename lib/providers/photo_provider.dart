@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:path/path.dart' as path;
+import 'package:flutter/services.dart';
 import '../models/photo_folder.dart';
 
 class PhotoProvider extends ChangeNotifier {
@@ -34,6 +35,17 @@ class PhotoProvider extends ChangeNotifier {
   Set<File> get selectedPhotos => _selectedPhotos;
   int get selectedCount => _selectedPhotos.length;
 
+  // 권한 이벤트 스트림
+  static const EventChannel _permissionEventChannel =
+      EventChannel('com.ant_revolution.ant_gallary/permission_events');
+  Stream<dynamic>? _permissionEvents;
+  Stream<dynamic> get permissionEvents {
+    _permissionEvents ??= _permissionEventChannel
+        .receiveBroadcastStream()
+        .asBroadcastStream();
+    return _permissionEvents!;
+  }
+
   PhotoProvider() {
     // 생성자에서는 초기화만 예약
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -52,7 +64,25 @@ class PhotoProvider extends ChangeNotifier {
       final storageStatus = await Permission.storage.request();
       final photosStatus = await Permission.photos.request();
       
-      permissionGranted = storageStatus.isGranted || photosStatus.isGranted;
+      // Android 13+ (API 33+)에서는 미디어 이미지 권한 필요
+      if (Platform.isAndroid) {
+        try {
+          if (await Permission.mediaLibrary.request().isGranted) {
+            debugPrint('미디어 라이브러리 권한 획득');
+          }
+          
+          // READ_MEDIA_IMAGES 권한 요청
+          final mediaImagesStatus = await Permission.manageExternalStorage.request();
+          if (mediaImagesStatus.isGranted) {
+            debugPrint('미디어 이미지 관리 권한 획득');
+            permissionGranted = true;
+          }
+        } catch (e) {
+          debugPrint('권한 요청 오류: $e');
+        }
+      }
+      
+      permissionGranted = permissionGranted || storageStatus.isGranted || photosStatus.isGranted;
       
       // 권한 없음
       if (!permissionGranted) {
@@ -364,16 +394,17 @@ class PhotoProvider extends ChangeNotifier {
   // 파일 시스템 캐시 비우기
   void clearCache() {
     try {
-      // 안전하게 특정 디렉토리만 접근
-      if (_defaultAntCameraPath != null) {
-        final Directory antCameraDir = Directory(_defaultAntCameraPath!);
-        if (antCameraDir.existsSync()) {
-          // 캐시 갱신을 위해 디렉토리 정보 읽기
-          antCameraDir.listSync(recursive: false);
-        }
-      }
+      // Android 10 이상에서는 MediaStore를 통해 접근할 수 있는 
+      // 미디어 파일만 접근 가능하므로 특정 파일 시스템 캐시를
+      // 직접 비우는 것은 필요하지 않음
+      
+      // 대신 이미지를 다시 로드할 때 최신 상태를 가져올 수 있도록
+      // 캐시된 정보 무효화
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        notifyListeners();
+      });
     } catch (e) {
-      debugPrint('Error clearing cache: $e');
+      debugPrint('Error refreshing cache: $e');
       // 오류가 발생해도 앱 실행에 영향을 주지 않도록 무시
     }
   }
@@ -411,14 +442,24 @@ class PhotoProvider extends ChangeNotifier {
   Future<bool> deleteSelectedPhotos() async {
     if (_selectedPhotos.isEmpty) return false;
     
-    bool success = true;
+    final MethodChannel platform = MethodChannel('com.ant_revolution.ant_gallary/file_operations');
     
     for (final photo in _selectedPhotos.toList()) {
       try {
-        // 파일 삭제
         final file = File(photo.path);
         if (await file.exists()) {
-          await file.delete();
+          // 먼저 플랫폼 채널을 통한 삭제 시도 (Android 10+ 최적화)
+          try {
+            await platform.invokeMethod('deleteFile', {'filePath': photo.path});
+          } catch (e) {
+            debugPrint('플랫폼 채널 삭제 실패: $e');
+            // 플랫폼 채널 실패 시 일반 삭제 시도
+            try {
+              await file.delete();
+            } catch (e2) {
+              debugPrint('일반 파일 삭제 실패: $e2');
+            }
+          }
           
           // 선택 목록과 사진 목록에서 제거
           _selectedPhotos.remove(photo);
@@ -444,10 +485,13 @@ class PhotoProvider extends ChangeNotifier {
               );
             }
           }
+        } else {
+          // 파일이 이미 존재하지 않으면 삭제된 것으로 간주
+          _selectedPhotos.remove(photo);
+          _photos.removeWhere((p) => p.path == photo.path);
         }
       } catch (e) {
         debugPrint('Error deleting photo: $e');
-        success = false;
       }
     }
     
@@ -456,7 +500,7 @@ class PhotoProvider extends ChangeNotifier {
     _selectedPhotos.clear();
     
     notifyListeners();
-    return success;
+    return true;
   }
 
   // 선택된 사진 다른 폴더로 이동

@@ -124,6 +124,9 @@ class AppStrings {
   static Future<String> selectedItemsAsync(int count) async =>
       await _getFormattedString('selected_items', {'arg1': count});
 
+  static Future<String> deleteConfirmAsync(int count) async =>
+      await _getFormattedString('delete_confirm', {'arg1': count});
+
   // 편의성을 위한 getter
   static String get appTitle => get('app_title');
   static String get tryAgain => get('try_again'); 

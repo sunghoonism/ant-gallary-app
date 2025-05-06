@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,9 @@ class _PhotoScreenState extends State<PhotoScreen> {
     // 빌드 사이클 이후에 사진 로드
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _loadPhotos();
+      
+      // 권한 이벤트 구독
+      _subscribeToPermissionEvents();
     });
   }
 
@@ -39,6 +43,31 @@ class _PhotoScreenState extends State<PhotoScreen> {
     } catch (e) {
       debugPrint('Photo loading error: $e');
     }
+  }
+
+  StreamSubscription? _permissionSubscription;
+  
+  void _subscribeToPermissionEvents() {
+    final provider = Provider.of<PhotoProvider>(context, listen: false);
+    _permissionSubscription = provider.permissionEvents.listen((event) {
+      if (event is Map<dynamic, dynamic> && 
+          event['event'] == 'delete_permission_result') {
+        debugPrint('권한 응답 이벤트 수신: $event');
+        
+        // 권한 응답 후 0.5초 후에 페이지 새로고침
+        Future.delayed(const Duration(milliseconds: 500), () {
+          if (mounted) {
+            _loadPhotos();
+          }
+        });
+      }
+    });
+  }
+  
+  @override
+  void dispose() {
+    _permissionSubscription?.cancel();
+    super.dispose();
   }
 
   // 폴더 선택 다이얼로그 표시
@@ -85,11 +114,17 @@ class _PhotoScreenState extends State<PhotoScreen> {
   Future<void> _confirmDeletePhotos() async {
     final provider = Provider.of<PhotoProvider>(context, listen: false);
     
-    final bool confirm = await showDialog(
+    // 먼저 포맷팅된 문자열을 가져옵니다
+    final deleteConfirmMessage = await AppStrings.deleteConfirmAsync(provider.selectedCount);
+    
+    if (!mounted) return;
+    
+    // 삭제 확인 대화상자
+    final bool? confirmDelete = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
         title: Text(AppStrings.get('delete')),
-        content: Text(AppStrings.format('delete_confirm', {'arg1': provider.selectedCount})),
+        content: Text(deleteConfirmMessage),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
@@ -101,17 +136,16 @@ class _PhotoScreenState extends State<PhotoScreen> {
           ),
         ],
       ),
-    ) ?? false;
+    );
     
-    if (confirm && mounted) {
-      final bool result = await provider.deleteSelectedPhotos();
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(result ? AppStrings.get('delete_success') : AppStrings.get('delete_error')),
-          ),
-        );
-      }
+    if (!mounted || confirmDelete != true) return;
+    
+    // 앱 내에서 직접 삭제
+    await provider.deleteSelectedPhotos();
+    
+    // 항상 페이지 새로고침
+    if (mounted) {
+      await _loadPhotos();
     }
   }
 
@@ -256,9 +290,9 @@ class _PhotoScreenState extends State<PhotoScreen> {
     final photosByDate = _groupPhotosByDate(provider.photos);
     final dates = photosByDate.keys.toList()..sort((a, b) => b.compareTo(a));
 
-    return RefreshIndicator(
-      onRefresh: _loadPhotos,
-      child: ListView.builder(
+    // 선택 모드일 때는 당겨서 새로고침 비활성화
+    if (provider.isSelectionMode) {
+      return ListView.builder(
         itemCount: dates.length,
         itemBuilder: (context, index) {
           final date = dates[index];
@@ -293,8 +327,49 @@ class _PhotoScreenState extends State<PhotoScreen> {
             ],
           );
         },
-      ),
-    );
+      );
+    } else {
+      // 선택 모드가 아닐 때는 당겨서 새로고침 활성화
+      return RefreshIndicator(
+        onRefresh: _loadPhotos,
+        child: ListView.builder(
+          itemCount: dates.length,
+          itemBuilder: (context, index) {
+            final date = dates[index];
+            final photos = photosByDate[date]!;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 16, right: 16, top: 16, bottom: 8
+                  ),
+                  child: Text(
+                    _formatDate(date),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+                MasonryGridView.count(
+                  crossAxisCount: 3,
+                  mainAxisSpacing: 4,
+                  crossAxisSpacing: 4,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: photos.length,
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  itemBuilder: (context, index) {
+                    return _buildPhotoItem(photos[index], provider);
+                  },
+                ),
+              ],
+            );
+          },
+        ),
+      );
+    }
   }
 
   // 날짜별로 사진 그룹화

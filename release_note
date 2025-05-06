@@ -1,107 +1,68 @@
 <en-US>
-This is a first version of Ant Gallery.
 Simple and intuitive photo gallery app.
-Easy to browse and manage your photos with clean interface.
+Easy to browse and manage your photos with folders.
 </en-US>
-
-<ar>
-هذا هو الإصدار الأول من معرض آنت.
-تطبيق معرض صور بسيط وسهل الاستخدام.
-سهولة تصفح وإدارة الصور الخاصة بك بواجهة نظيفة.
-</ar>
-
-<de-DE>
-Dies ist die erste Version der Ant Gallery.
-Einfache und intuitive Fotogalerie-App.
-Einfaches Durchsuchen und Verwalten Ihrer Fotos mit übersichtlicher Benutzeroberfläche.
-</de-DE>
-
-<es-419>
-Esta es la primera versión de Ant Gallery.
-Aplicación de galería de fotos simple e intuitiva.
-Fácil de navegar y administrar sus fotos con una interfaz limpia.
-</es-419>
-
-<es-ES>
-Esta es la primera versión de Ant Gallery.
-Aplicación de galería de fotos simple e intuitiva.
-Fácil de navegar y administrar sus fotos con una interfaz limpia.
-</es-ES>
-
-<fr-FR>
-C'est la première version d'Ant Gallery.
-Application de galerie photo simple et intuitive.
-Facile à parcourir et à gérer vos photos avec une interface épurée.
-</fr-FR>
-
-<hi-IN>
-यह एंट गैलरी का पहला संस्करण है।
-सरल और सहज फोटो गैलरी ऐप।
-साफ इंटरफेस के साथ अपनी तस्वीरों को ब्राउज़ और प्रबंधित करना आसान है।
-</hi-IN>
-
-<id-ID>
-Ini adalah versi pertama dari Ant Gallery.
-Aplikasi galeri foto yang sederhana dan intuitif.
-Mudah menjelajahi dan mengelola foto Anda dengan antarmuka yang bersih.
-</id-ID>
-
-<it-IT>
-Questa è la prima versione di Ant Gallery.
-App galleria fotografica semplice e intuitiva.
-Facile da sfogliare e gestire le tue foto con un'interfaccia pulita.
-</it-IT>
-
-<ja-JP>
-アントギャラリーの初版です。
-シンプルで直感的な写真ギャラリーアプリ。
-クリーンなインターフェースで写真の閲覧と管理が簡単にできます。
-</ja-JP>
-
 <ko-KR>
-앤트 갤러리의 첫 번째 버전입니다.
-간단하고 직관적인 사진 갤러리 앱입니다.
-깔끔한 인터페이스로 사진을 쉽게 탐색하고 관리할 수 있습니다.
+간단하고 직관적인 사진 갤러리 앱.
+폴더로 사진을 쉽게 탐색하고 관리할 수 있습니다.
 </ko-KR>
-
-<pl-PL>
-To jest pierwsza wersja Ant Gallery.
-Prosta i intuicyjna aplikacja galerii zdjęć.
-Łatwe przeglądanie i zarządzanie zdjęciami dzięki przejrzystemu interfejsowi.
-</pl-PL>
-
-<pt-BR>
-Esta é a primeira versão da Ant Gallery.
-Aplicativo de galeria de fotos simples e intuitivo.
-Fácil de navegar e gerenciar suas fotos com interface limpa.
-</pt-BR>
-
-<th>
-นี่คือเวอร์ชันแรกของแอนท์แกลเลอรี
-แอปแกลเลอรีรูปภาพที่เรียบง่ายและใช้งานง่าย
-ง่ายต่อการเรียกดูและจัดการรูปภาพของคุณด้วยอินเทอร์เฟซที่สะอาด
-</th>
-
-<tr-TR>
-Bu, Ant Gallery'nin ilk versiyonudur.
-Basit ve sezgisel fotoğraf galerisi uygulaması.
-Temiz arayüzü ile fotoğraflarınıza göz atmak ve yönetmek kolaydır.
-</tr-TR>
-
-<vi>
-Đây là phiên bản đầu tiên của Ant Gallery.
-Ứng dụng thư viện ảnh đơn giản và trực quan.
-Dễ dàng duyệt và quản lý ảnh của bạn với giao diện sạch sẽ.
-</vi>
-
+<ja-JP>
+シンプルで直感的な写真ギャラリーアプリ。
+フォルダで写真を簡単に閲覧、管理できます。
+</ja-JP>
+<es-ES>
+Aplicación de galería de fotos simple e intuitiva.
+Fácil de navegar y gestionar tus fotos con carpetas.
+</es-ES>
 <zh-CN>
-这是蚂蚁图库的第一个版本。
-简单直观的照片库应用程序。
-干净的界面，轻松浏览和管理您的照片。
+简单直观的照片库应用。
+使用文件夹轻松浏览和管理您的照片。
 </zh-CN>
-
-<zh-TW>
-這是螞蟻圖庫的第一個版本。
-簡單直覺的照片庫應用程式。
-乾淨的界面，輕鬆瀏覽和管理您的照片。
-</zh-TW>
+<fr-FR>
+Application de galerie photo simple et intuitive.
+Facile à parcourir et à gérer vos photos avec des dossiers.
+</fr-FR>
+<de-DE>
+Einfache und intuitive Fotogalerie-App.
+Durchsuchen und Verwalten Ihrer Fotos mit Ordnern leicht gemacht.
+</de-DE>
+<it-IT>
+App galleria fotografica semplice e intuitiva.
+Facile da sfogliare e gestire le tue foto con cartelle.
+</it-IT>
+<pt-PT>
+Aplicativo de galeria de fotos simples e intuitivo.
+Fácil de navegar e gerenciar suas fotos com pastas.
+</pt-PT>
+<ru-RU>
+Простое и интуитивно понятное приложение фотогалереи.
+Легко просматривайте и управляйте своими фотографиями с помощью папок.
+</ru-RU>
+<id>
+Aplikasi galeri foto yang sederhana dan intuitif.
+Jelajahi dan kelola foto Anda dengan folder dengan mudah.
+</id>
+<th>
+แอปแกลเลอรีรูปภาพที่เรียบง่ายและใช้งานง่าย
+เรียกดูและจัดการรูปภาพของคุณด้วยโฟลเดอร์ได้อย่างง่ายดาย
+</th>
+<vi>
+Ứng dụng thư viện ảnh đơn giản và trực quan.
+Dễ dàng duyệt và quản lý ảnh của bạn bằng thư mục.
+</vi>
+<tr-TR>
+Basit ve sezgisel fotoğraf galerisi uygulaması.
+Klasörlerle fotoğraflarınıza göz atmak ve yönetmek kolay.
+</tr-TR>
+<ar>
+تطبيق معرض صور بسيط وبديهي.
+سهولة تصفح وإدارة صورك باستخدام المجلدات.
+</ar>
+<pl-PL>
+Prosta i intuicyjna aplikacja galerii zdjęć.
+Łatwe przeglądanie i zarządzanie zdjęciami za pomocą folderów.
+</pl-PL>
+<nl-NL>
+Eenvoudige en intuïtieve fotogalerie-app.
+Gemakkelijk door je foto's bladeren en ze beheren met mappen.
+</nl-NL>
